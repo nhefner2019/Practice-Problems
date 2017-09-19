@@ -9,13 +9,19 @@ public class Fibonacci implements Iterator<Integer>
 	private int current = 1;
 	private int previous = 1;
 	private int temp;
-	private int count = 2;
+	private int count = -1;
 	
 	public Integer next()
 	{
-		if(hasNext())
+		
+		count++;
+		
+		if(count < 2)
+			return 1;
+		
+		else if(hasNext())
 		{
-			count++;
+
 			
 			temp = current + previous;
 			previous = current;
@@ -25,8 +31,10 @@ public class Fibonacci implements Iterator<Integer>
 			
 		}
 		
+
+		
 		else
-			throw new NoSuchElementException("Squares only up to 100");
+			throw new NoSuchElementException("Only first 20 numbers of Fibonacci sequence");
 	}
 	
 	public boolean hasNext()
@@ -34,8 +42,6 @@ public class Fibonacci implements Iterator<Integer>
 		if(count > 20)
 			return false;
 			
-		else if(count < 2)
-			return false;
 		else
 			return true;
 	}

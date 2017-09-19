@@ -2,23 +2,22 @@ import java.util.Iterator;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 
-public class ArrayIterator implements Iterator<Integer>
+public class ArrayIterator<T> implements Iterator<T>
 {
 	private int counter = -1;
-	private int[] arr = {45, 2, -6, 88, 124, 17, 25};
+	private T[] arr;
 	
-	public Integer next()
+	public ArrayIterator(T[] a)
 	{
-		if(hasNext())
-		{
-			counter++;
-			return arr[counter];
-		}
-		else
-			throw new NoSuchElementException("No more numbers in the array");
+		arr = a;
 	}
 	
-	
+	public T next()
+	{
+		counter++;
+		return arr[counter];
+		
+	}
 	
 	public boolean hasNext()
 	{
