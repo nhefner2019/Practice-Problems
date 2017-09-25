@@ -1,10 +1,9 @@
 import java.util.Comparator;
-import java.util.Comparable;
 
-public class UniversalCompare implements Comparator
+public class UniversalCompare<T extends Comparable<T>> implements Comparator<T>
 {
-	public int compare(Comparable c1, Comparable c2)
+	public int compare(T a, T b)
 	{
-		return c1.compareTo(c2);
+		return a.compareTo(b);
 	}
 }
